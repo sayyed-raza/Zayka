@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+        <span onclick="this.parentElement.style.display='none';" style="cursor: pointer; font-weight: bold; font-size: 1.5rem;">
+                    &times;
+                </span>
+    </div>
+{% endfor %}
+{% endif %}
+
+
+    <section class="auth-section">
+        <div class="container auth-container">
+            <!-- Left Side: Image -->
+            <div class="auth-image" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+                <div class="auth-image-overlay">
+                    <h2>Join the Zayka Family</h2>
+                    <p>Experience the best food delivery service in town with exclusive offers and blazing fast delivery.</p>
+                </div>
+            </div>
+            
+            <!-- Right Side: Form -->
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Create an Account</h2>
+                    <p>Join Zayka to order your favorite food.</p>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social"><i class="fab fa-google btn-google"></i> Sign up with Google</button>
+                    <button class="btn btn-social"><i class="fab fa-facebook-f btn-facebook"></i> Sign up with Facebook</button>
+                </div>
+                
+                <div class="auth-divider">
+                    <span>or continue with email</span>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            {{form.first_name.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                {{form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            {{form.last_name.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                {{form.last_name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        {{form.email.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            {{form.email}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        {{form.username.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            {{form.username}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        {{form.password1.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            {{form.password1}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        {{form.password2.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            {{form.password2}}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-btn">Create Account</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %} 
+
+
+{% block extra_scripts %}
+    <script>
+    // Wait for the page to fully load
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find the message container
+        var messageContainer = document.getElementById('message-container');
+        
+        // If it exists, set a timer to hide it
+        if (messageContainer) {
+            setTimeout(function() {
+                // Fade out effect (optional)
+                messageContainer.style.transition = "opacity 0.5s ease";
+                messageContainer.style.opacity = "0";
+                
+                // Remove it from the layout after fading out
+                setTimeout(function() {
+                    messageContainer.style.display = "none";
+                }, 500); // Wait half a second for the fade transition
+                
+            }, 4000); // 4000 milliseconds = 4 seconds
+        }
+    });
+</script>
+{% endblock %}
+

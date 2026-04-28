@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,3 +127,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+
+# CUSTOM SETTINGS
+# Custom user model
+AUTH_USER_MODEL = 'accounts.User'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
