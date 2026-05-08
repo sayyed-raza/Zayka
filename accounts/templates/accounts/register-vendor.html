@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="container auth-container">
+            <!-- Left Side: Image -->
+            <div class="auth-image" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+                <div class="auth-image-overlay">
+                    <h2>Partner with Zayka</h2>
+                    <p>Grow your business, reach more customers, and manage your orders seamlessly with our vendor platform.</p>
+                </div>
+            </div>
+            
+            <!-- Right Side: Form -->
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Register Your Restaurant</h2>
+                    <p>Join Zayka and expand your reach today.</p>
+                </div>
+                
+                {{form.errors}}
+                {{v_form.errors}}
+
+                <form method="POST" action="{% url 'register-vendor' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="restaurant_name">Restaurant Name</label>
+                        {{v_form.name.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-store"></i>
+                            {{v_form.name}}
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">Owner First Name</label>
+                            {{form.first_name.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                {{form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Owner Last Name</label>
+                            {{form.last_name.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                {{form.last_name}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label for="firstname">Username</label>
+                            {{form.first_name.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                {{form.username}}
+                            </div>
+                        </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Business Email</label>
+                            {{form.email.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                {{form.email}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            {{form.phone_number.errors}}
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                {{form.phone_number}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="license">Upload your Licence</label>
+                        {{v_form.license.errors}}
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-id-card"></i>
+                            {{v_form.license}}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        {{form.password1.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            {{form.password1}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Confirm Password</label>
+                        {{form.password2.errors}}
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            {{form.password2}}
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary auth-btn">Register Restaurant</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already a partner? <a href="#">Sign In Here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

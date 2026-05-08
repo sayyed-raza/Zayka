@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 from .forms import UserForm
 from.models import User
-
+from vendor.forms import VendorForm
 
 
 # Create your views here.
@@ -14,7 +14,7 @@ from.models import User
 #         "form": UserForm,
 #     })
 
-class RegisterView(View):
+class RegisterUserView(View):
     def get(self, request):
         return render(request, 'accounts/register-user.html', {
             "form": UserForm(),
@@ -31,3 +31,21 @@ class RegisterView(View):
         return render(request, 'accounts/register-user.html', {
             "form": form,
         })
+    
+def register_vendor(request):
+    form = UserForm(request.POST or None)
+    v_form = VendorForm(request.POST or None, request.FILES or None)
+    if form.is_valid() and v_form.is_valid(): 
+        user = form.save(commit=False)
+        user.role = User.RESTAURANT_OWNER
+        user.save()
+        vendor = v_form.save(commit=False)
+        vendor.user = user
+        vendor.user_profile = user.user_profile
+        vendor.save()
+        messages.success(request, "Vendor registered successfully! Please wait for approval.")
+        return HttpResponseRedirect(reverse('register-vendor'))
+    return render(request, 'accounts/register-vendor.html', {
+        "form": form,
+        "v_form": v_form,
+    })

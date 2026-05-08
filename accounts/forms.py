@@ -19,11 +19,12 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username', 'email', 'phone_number', 'password1', 'password2',]
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'John', 'id': 'firstname'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Doe', 'id': 'lastname'}),
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'johndoe', 'id': 'username'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'john@example.com', 'required': True, 'id': 'email'}),
+            'phone_number': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': '0000000000', 'id': 'phone'}),
         }
