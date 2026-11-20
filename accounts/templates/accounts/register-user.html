@@ -1,17 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if messages %}
-{% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-        {{ message }}
-        <span onclick="this.parentElement.style.display='none';" style="cursor: pointer; font-weight: bold; font-size: 1.5rem;">
-                    &times;
-                </span>
-    </div>
-{% endfor %}
-{% endif %}
-
 
     <section class="auth-section">
         <div class="container auth-container">
@@ -104,27 +93,6 @@
 
 
 {% block extra_scripts %}
-    <script>
-    // Wait for the page to fully load
-    document.addEventListener("DOMContentLoaded", function() {
-        // Find the message container
-        var messageContainer = document.getElementById('message-container');
-        
-        // If it exists, set a timer to hide it
-        if (messageContainer) {
-            setTimeout(function() {
-                // Fade out effect (optional)
-                messageContainer.style.transition = "opacity 0.5s ease";
-                messageContainer.style.opacity = "0";
-                
-                // Remove it from the layout after fading out
-                setTimeout(function() {
-                    messageContainer.style.display = "none";
-                }, 500); // Wait half a second for the fade transition
-                
-            }, 4000); // 4000 milliseconds = 4 seconds
-        }
-    });
-</script>
+    
 {% endblock %}
 

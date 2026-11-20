@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Delicious Food, Delivered Fast</h1>
+        <p>Order from your favorite restaurants and get it delivered to your doorstep</p>
+        <div class="hero-search">
+            <input type="text" placeholder="Enter your delivery address or search for restaurants..." />
+            <button class="btn btn-primary">Find Food</button>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Categories -->
+<section class="section-padding">
+    <div class="container">
+        <h2 class="section-title">What are you craving?</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Biryani</h3>
+            </div>
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-pepper-hot"></i>
+                </div>
+                <h3>North Indian</h3>
+            </div>
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h3>South Indian</h3>
+            </div>
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Street Food</h3>
+            </div>
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-drumstick-bite"></i>
+                </div>
+                <h3>Indo-Chinese</h3>
+            </div>
+            <div class="category-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-ice-cream"></i>
+                </div>
+                <h3>Sweets</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <h2 class="section-title">How Zayka Works</h2>
+        <div class="restaurant-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="category-card" style="padding: 40px 30px;">
+                <div class="icon-wrapper" style="width: 80px; height: 80px; font-size: 2rem; margin-bottom: 20px;">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Find Your Food</h3>
+                <p style="color: var(--text-muted);">Browse hundreds of restaurants and discover new cuisines</p>
+            </div>
+            <div class="category-card" style="padding: 40px 30px;">
+                <div class="icon-wrapper" style="width: 80px; height: 80px; font-size: 2rem; margin-bottom: 20px;">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Place Your Order</h3>
+                <p style="color: var(--text-muted);">Choose your favorite dishes and checkout securely</p>
+            </div>
+            <div class="category-card" style="padding: 40px 30px;">
+                <div class="icon-wrapper" style="width: 80px; height: 80px; font-size: 2rem; margin-bottom: 20px;">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Fast Delivery</h3>
+                <p style="color: var(--text-muted);">Get your food delivered hot and fresh to your door</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="section-padding">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Why Choose Zayka?</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
+                    Experience the best food delivery service with a wide selection of restaurants,
+                    fast delivery times, and great customer support.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: start; gap: 15px;">
+                        <div style="width: 50px; height: 50px; background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Fast Delivery</h3>
+                            <p style="color: var(--text-muted);">Get your food delivered within 30 minutes</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 15px;">
+                        <div style="width: 50px; height: 50px; background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Quality Food</h3>
+                            <p style="color: var(--text-muted);">Only partner with the best restaurants in town</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: start; gap: 15px;">
+                        <div style="width: 50px; height: 50px; background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 5px;">24/7 Support</h3>
+                            <p style="color: var(--text-muted);">Our team is always here to help you</p>
+                        </div>
+                    </div>
+                </div>
+                {% if not user.is_authenticated %}
+                <div style="margin-top: 30px;">
+                    <a href="{% url 'register-user' %}" class="btn btn-primary" style="margin-right: 15px;">Get Started</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline">Sign In</a>
+                </div>
+                {% endif %}
+            </div>
+            <div style="background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)); border-radius: 20px; padding: 60px; text-align: center; color: white;">
+                <i class="fas fa-utensils" style="font-size: 6rem; margin-bottom: 20px; opacity: 0.9;"></i>
+                <h3 style="font-size: 2rem; margin-bottom: 15px;">1000+ Restaurants</h3>
+                <p style="font-size: 1.1rem; opacity: 0.9;">Choose from a wide variety of cuisines and restaurants</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partner CTA Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div style="background: var(--text-dark); border-radius: 20px; padding: 60px; text-align: center; color: white;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Partner with Zayka</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Join thousands of restaurants already growing their business with Zayka.
+                Reach more customers and increase your revenue.
+            </p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 30px;">
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color);">5000+</div>
+                    <div style="opacity: 0.8;">Active Users</div>
+                </div>
+                <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color);">1000+</div>
+                    <div style="opacity: 0.8;">Partner Restaurants</div>
+                </div>
+                <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+                <div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color);">50K+</div>
+                    <div style="opacity: 0.8;">Orders Delivered</div>
+                </div>
+            </div>
+            <a href="{% url 'register-vendor' %}" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;">Register Your Restaurant</a>
+        </div>
+    </div>
+</section>
+
+<!-- App Download Section -->
+<section class="section-padding">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div style="text-align: center;">
+                <i class="fas fa-mobile-alt" style="font-size: 15rem; color: var(--primary-color); opacity: 0.1;"></i>
+            </div>
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 700;">Download Our App</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
+                    Get the Zayka app for the best food ordering experience.
+                    Available on iOS and Android.
+                </p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--text-dark); color: white; border-radius: 8px; font-weight: 500;">
+                        <i class="fab fa-apple" style="font-size: 1.5rem;"></i>
+                        <div style="text-align: left;">
+                            <div style="font-size: 0.7rem; opacity: 0.8;">Download on the</div>
+                            <div style="font-size: 1rem;">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--text-dark); color: white; border-radius: 8px; font-weight: 500;">
+                        <i class="fab fa-google-play" style="font-size: 1.5rem;"></i>
+                        <div style="text-align: left;">
+                            <div style="font-size: 0.7rem; opacity: 0.8;">Get it on</div>
+                            <div style="font-size: 1rem;">Google Play</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

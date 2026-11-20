@@ -5,7 +5,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 class Vendor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     license = models.ImageField(upload_to='vendor/license')
     is_approved = models.BooleanField(default=False)

@@ -3,14 +3,14 @@
     --primary-color: #ff5722; /* Appetizing Orange */
     --primary-hover: #e64a19;
     /* --text-dark: #2d3436; */
-    --text-dark: #191A1B;
+    --text-dark: #191a1b;
     --text-muted: #636e72;
     --bg-light: #f8f9fa;
     --white: #ffffff;
     --border-color: #eee;
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
     --border-radius: 12px;
     --transition: all 0.3s ease;
 }
@@ -22,7 +22,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     color: var(--text-dark);
     background-color: var(--white);
     line-height: 1.6;
@@ -216,7 +216,10 @@ ul {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")
+            center/cover;
     height: 60vh;
     min-height: 500px;
     display: flex;
@@ -442,7 +445,7 @@ ul {
 .social-links a {
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -476,7 +479,7 @@ ul {
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #b2bec3;
     font-size: 0.9rem;
 }
@@ -519,7 +522,11 @@ ul {
 .auth-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.8)
+    );
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -584,12 +591,12 @@ ul {
 }
 
 .btn-google {
-    color: #DB4437;
+    color: #db4437;
     font-size: 1.1rem;
 }
 
 .btn-facebook {
-    color: #4267B2;
+    color: #4267b2;
     font-size: 1.1rem;
 }
 
@@ -602,7 +609,7 @@ ul {
 
 .auth-divider::before,
 .auth-divider::after {
-    content: '';
+    content: "";
     flex: 1;
     border-bottom: 1px solid var(--border-color);
 }
@@ -654,7 +661,7 @@ ul {
 .input-with-icon input[type="file"] {
     width: 100%;
     /* 45px left padding perfectly clears your absolutely positioned icon! */
-    padding: 9px 15px 9px 45px; 
+    padding: 9px 15px 9px 45px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-family: inherit;
@@ -759,6 +766,253 @@ ul {
     background-color: #2ecc71;
     color: var(--white);
 }
+.alert-error {
+    background-color: #e74c3c;
+    color: var(--white);
+}
+.alert-info{
+    background-color: #3498db;
+    color: var(--white);
+}
+
+/* Dashboard Styles */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.dashboard-sidebar {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    box-shadow: var(--shadow-sm);
+    height: fit-content;
+}
+
+.user-profile-card {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 15px;
+    border: 2px solid var(--primary-color);
+}
+
+.user-profile-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.user-profile-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dashboard-nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.dashboard-nav a i {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    width: 20px;
+    text-align: center;
+}
+
+.dashboard-nav a:hover, .dashboard-nav a.active {
+    background-color: rgba(255, 87, 34, 0.1);
+    color: var(--primary-color);
+}
+
+.dashboard-nav a:hover i, .dashboard-nav a.active i {
+    color: var(--primary-color);
+}
+
+.dashboard-nav a.logout-link {
+    margin-top: 20px;
+    color: #e74c3c;
+}
+
+.dashboard-nav a.logout-link i {
+    color: #e74c3c;
+}
+
+.dashboard-nav a.logout-link:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dashboard-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 25px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 87, 34, 0.1);
+    color: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+
+.stat-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.order-header h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.order-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge.delivered {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.status-badge.cancelled {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+}
+
+.order-body {
+    margin-bottom: 15px;
+}
+
+.order-body p {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -798,4 +1052,48 @@ ul {
     .footer-grid {
         grid-template-columns: 1fr;
     }
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* 1. Ensure the form wrapper takes up the full width and handles the spacing */
+/* .dashboard-nav .logout-form {
+    margin-top: 20px;
+    width: 100%;
+} */
+
+/* 2. Style the button to perfectly mimic your dashboard links */
+.dashboard-nav button.logout-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #e74c3c; /* Red color for logout */
+    font-weight: 500;
+    transition: var(--transition);
+    
+    /* Strip away default browser button styles */
+    background: transparent;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* 3. Ensure the icon matches the red color and aligns perfectly */
+.dashboard-nav button.logout-link i {
+    font-size: 1.1rem;
+    color: #e74c3c;
+    width: 20px;
+    text-align: center;
+}
+
+/* 4. Add the hover effect back */
+.dashboard-nav button.logout-link:hover {
+    background-color: rgba(231, 76, 60, 0.1);
 }

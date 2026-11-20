@@ -24,6 +24,7 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.is_staff = True
         user.is_superadmin = True
+        user.is_active = True
         user.save(using=self._db)
         return user
     
@@ -50,14 +51,13 @@ class User(AbstractBaseUser):
                                             blank=True, null=True)
 
     # required fields for Django's authentication system
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superadmin = models.BooleanField(default=False)
 
-    date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'email'
@@ -72,6 +72,9 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
     
+    def is_restaurant_owner(self):
+        return self.role == self.RESTAURANT_OWNER
+    
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True, related_name='user_profile')
@@ -83,8 +86,8 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=15, blank=True, null=True)
     city = models.CharField(max_length=15, blank=True, null=True)
     pin_code = models.CharField(max_length=6, blank=True, null=True)
-    latitude = models.CharField(max_length=20, blank=True, null=True)
-    longitude = models.CharField(max_length=20, blank=True, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

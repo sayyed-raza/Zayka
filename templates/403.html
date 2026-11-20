@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}403 Forbidden{% endblock %}
+
+{% block content %}
+<section class="section-padding bg-light" style="min-height: 75vh; display: flex; align-items: center;">
+    <div class="container">
+        <div style="max-width: 620px; margin: 0 auto; text-align: center; background: var(--white); padding: 50px 40px; border-radius: var(--border-radius); box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
+            <!-- Icon / Badge -->
+            <div style="position: relative; display: inline-block; margin-bottom: 25px;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; margin: 0 auto;">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span style="position: absolute; bottom: 0; right: 0; background-color: var(--primary-color); color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; border: 3px solid #fff;">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+
+            <!-- Error Code & Headings -->
+            <h1 style="font-size: 4.5rem; font-weight: 800; line-height: 1; color: var(--primary-color); margin-bottom: 10px; letter-spacing: -1px;">
+                403
+            </h1>
+            <h2 style="font-size: 1.6rem; font-weight: 700; color: var(--text-dark); margin-bottom: 15px;">
+                Access Forbidden
+            </h2>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 30px;">
+                Sorry, you don't have permission to access this kitchen! The page or action you requested is restricted to authorized accounts only.
+            </p>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="{% url 'home' %}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-tachometer-alt"></i> My Dashboard
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </a>
+                {% endif %}
+            </div>
+
+            <!-- Helpful Note -->
+            <div style="margin-top: 35px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 0.88rem; color: var(--text-muted);">
+                <i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 5px;"></i>
+                Need help? If you believe this is an error, please contact your administrator or switch to an authorized account.
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

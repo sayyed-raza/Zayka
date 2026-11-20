@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <!-- Dashboard Content -->
+    <main class="section-padding">
+        <div class="container">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="{% url 'dashboard' %}" class="active"><i class="fas fa-home"></i> Overview</a>
+                        <a href="#"><i class="fas fa-box"></i> My Orders</a>
+                        <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                        <a href="#"><i class="fas fa-map-marker-alt"></i> Addresses</a>
+                        <a href="#"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <form method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-link">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
+                        {% comment %} <a href="{% url 'logout' %}" class="logout-link" method="post"><i class="fas fa-sign-out-alt"></i> Logout</a> {% endcomment %}
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <h2 class="dashboard-title">Welcome back, {{ user.first_name }}!</h2>
+
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="stat-info">
+                                <h3>12</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-info">
+                                <h3>4</h3>
+                                <p>Reviews Given</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+                            <div class="stat-info">
+                                <h3>$45.50</h3>
+                                <p>Zayka Cash</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-orders-section mt-4">
+                        <div class="section-header">
+                            <h3>Recent Orders</h3>
+                            <a href="#" class="btn btn-outline btn-sm">View All</a>
+                        </div>
+                        
+                        <div class="order-list">
+                            <!-- Order Item 1 -->
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>The Spice Route</h4>
+                                        <p class="order-date">May 10, 2026 &bull; Order #ORD-8472</p>
+                                    </div>
+                                    <span class="status-badge delivered">Delivered</span>
+                                </div>
+                                <div class="order-body">
+                                    <p>2x Chicken Tikka Masala, 1x Garlic Naan</p>
+                                </div>
+                                <div class="order-footer">
+                                    <span class="order-total">$32.40</span>
+                                    <div class="order-actions">
+                                        <button class="btn btn-outline btn-sm">Reorder</button>
+                                        <button class="btn btn-primary btn-sm">Help</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order Item 2 -->
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Mama's Italian</h4>
+                                        <p class="order-date">May 5, 2026 &bull; Order #ORD-7391</p>
+                                    </div>
+                                    <span class="status-badge cancelled">Cancelled</span>
+                                </div>
+                                <div class="order-body">
+                                    <p>1x Margherita Pizza (Large)</p>
+                                </div>
+                                <div class="order-footer">
+                                    <span class="order-total">$18.99</span>
+                                    <div class="order-actions">
+                                        <button class="btn btn-outline btn-sm">Reorder</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

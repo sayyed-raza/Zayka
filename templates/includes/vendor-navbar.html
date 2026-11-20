@@ -1,0 +1,20 @@
+{% load static %}
+
+<!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-utensils"></i> Zay<span>ka</span> <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">for Partners</span>
+            </a>
+            <div class="nav-links">
+                <div class="store-status">
+                    <span class="status-text">Restaurant Open</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <a href="{% url 'dashboard' %}" id="user-profile-link"><i class="fas fa-store"></i>{{request.user.vendor.name}}</a>
+            </div>
+        </div>
+    </header>

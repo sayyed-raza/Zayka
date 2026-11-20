@@ -6,7 +6,7 @@ from .forms import UserForm
 # Register your models here.
 class CustomUserAdmin(UserAdmin):
     add_form = UserForm
-    list_display = ('email', 'username', 'first_name', 'last_name', 'role', 'is_admin')
+    list_display = ('email', 'username', 'first_name', 'last_name', 'role', 'is_active')
     list_filter = ()
     fieldsets = ()
     filter_horizontal = ()

@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Dashboard Content -->
+    <main class="section-padding">
+        <div class="container">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile-card">
+                        <div class="profile-avatar">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Restaurant Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                        <h3>{{ user.vendor.name }}</h3>
+                        <p>ID: {{ user.vendor.id }}</p>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="{% url "dashboard" %}" class="active"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                        <a href="#"><i class="fas fa-concierge-bell"></i> Active Orders <span class="badge" style="background-color: var(--primary-color); color: white; padding: 2px 6px; border-radius: 10px; font-size: 0.75rem; margin-left: auto;">3</span></a>
+                        <a href="#"><i class="fas fa-list"></i> Menu Management</a>
+                        <a href="#"><i class="fas fa-wallet"></i> Earnings</a>
+                        <a href="#"><i class="fas fa-star"></i> Reviews</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 class="dashboard-title">Today's Overview</h2>
+                        <span style="color: var(--text-muted); font-weight: 500;">May 11, 2026</span>
+                    </div>
+                    
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-info">
+                                <h3>$458.50</h3>
+                                <p>Revenue Today</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <div class="stat-info">
+                                <h3>24</h3>
+                                <p>Orders Completed</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-star"></i></div>
+                            <div class="stat-info">
+                                <h3>4.8</h3>
+                                <p>Average Rating</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-orders-section mt-4">
+                        <div class="section-header">
+                            <h3>Active Orders (3)</h3>
+                            <button class="btn btn-outline btn-sm"><i class="fas fa-sync-alt"></i> Refresh</button>
+                        </div>
+                        
+                        <div class="order-list">
+                            <!-- New Order (Needs Acceptance) -->
+                            <div class="order-card vendor-order-card new-order">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Order #ORD-8475</h4>
+                                        <p class="order-date">2 mins ago &bull; Customer: Alice Smith</p>
+                                    </div>
+                                    <span class="status-badge new">New</span>
+                                </div>
+                                <div class="order-body">
+                                    <div class="vendor-order-items">
+                                        <div class="item-row"><span>2x Chicken Tikka Masala</span> <span>$24.00</span></div>
+                                        <div class="item-row"><span>1x Garlic Naan</span> <span>$3.50</span></div>
+                                        <div class="item-row"><span>1x Mango Lassi</span> <span>$4.90</span></div>
+                                    </div>
+                                    <div class="vendor-order-total">
+                                        <span>Total Earnings</span>
+                                        <strong>$32.40</strong>
+                                    </div>
+                                    <p class="order-note"><i class="fas fa-comment-alt"></i> Note: Please make it extra spicy!</p>
+                                </div>
+                                <div class="order-footer">
+                                    <div class="order-actions" style="width: 100%; display: flex; gap: 10px;">
+                                        <button class="btn btn-outline" style="flex: 1; border-color: #e74c3c; color: #e74c3c;">Reject</button>
+                                        <button class="btn btn-primary" style="flex: 1; background-color: #2ecc71; border-color: #2ecc71;">Accept Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preparing Order -->
+                            <div class="order-card vendor-order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Order #ORD-8474</h4>
+                                        <p class="order-date">15 mins ago &bull; Customer: Bob Johnson</p>
+                                    </div>
+                                    <span class="status-badge preparing">Preparing</span>
+                                </div>
+                                <div class="order-body">
+                                    <div class="vendor-order-items">
+                                        <div class="item-row"><span>1x Paneer Butter Masala</span></div>
+                                        <div class="item-row"><span>2x Tandoori Roti</span></div>
+                                    </div>
+                                </div>
+                                <div class="order-footer">
+                                    <div class="order-actions" style="width: 100%;">
+                                        <button class="btn btn-primary" style="width: 100%;">Mark as Ready</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ready for Pickup Order -->
+                            <div class="order-card vendor-order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Order #ORD-8470</h4>
+                                        <p class="order-date">30 mins ago &bull; Rider: John Driver</p>
+                                    </div>
+                                    <span class="status-badge ready">Ready for Pickup</span>
+                                </div>
+                                <div class="order-body">
+                                    <div class="vendor-order-items">
+                                        <div class="item-row"><span>1x Veg Biryani</span></div>
+                                    </div>
+                                </div>
+                                <div class="order-footer">
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);"><i class="fas fa-motorcycle"></i> Rider is 2 mins away</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
