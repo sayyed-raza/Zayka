@@ -21,7 +21,13 @@
                         <a href="#"><i class="fas fa-wallet"></i> Earnings</a>
                         <a href="#"><i class="fas fa-star"></i> Reviews</a>
                         <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                        <a href="#" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <form method="post" action="{% url 'logout' %}" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-link">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
+                        {% comment %} <a href="{% url 'logout' %}" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a> {% endcomment %}
                     </nav>
                 </aside>
 

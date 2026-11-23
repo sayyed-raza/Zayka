@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
 
 from .forms import UserForm, LoginForm
 from .models import User
@@ -35,6 +37,7 @@ class RegisterUserView(View):
             user = form.save(commit=False)
             user.role = User.CUSTOMER
             user.save()
+            utils.send_verification_email(request, user)
             messages.success(request, "User registered successfully!")
             return redirect('login')
         return render(request, 'accounts/register-user.html', {
@@ -57,6 +60,7 @@ def register_vendor(request):
         vendor.user = user
         vendor.user_profile = user.user_profile
         vendor.save()
+        utils.send_verification_email(request, user)
         messages.success(request, "Vendor registered successfully! Please wait for approval.")
         return redirect('dashboard')
     return render(request, 'accounts/register-vendor.html', {
@@ -114,3 +118,69 @@ def customer_profile(request):
 @vendor_only
 def vendor_profile(request):
     return render(request, 'accounts/vendor-dashboard.html')
+
+def activate(request, uidb64, token):
+    """Activate the user account if the token is valid."""
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, "Your account has been activated successfully!")
+        return redirect('dashboard')
+    else:
+        messages.error(request, "Activation link is invalid!")
+        return redirect('login')
+
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            user = User.objects.get(email=email)
+            utils.send_password_reset_email(request, user)
+            messages.success(request, "Password reset link has been sent to your email.")
+            return redirect('login')
+        except User.DoesNotExist:
+            messages.error(request, "No user found with this email address.")
+    return render(request, 'accounts/forgot-password.html')
+
+def reset_password_validate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['reset_user_id'] = uid  # Store user ID in session for the next step
+        return redirect('reset-password')
+    else:
+        messages.error(request, "Password reset link is invalid!")
+        return redirect('forgot-password')
+
+def reset_password(request):
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if new_password != confirm_password:
+            messages.error(request, "Passwords do not match!")
+            return redirect('reset-password')
+
+        user_id = request.session.get('reset_user_id')
+        if user_id:
+            try:
+                user = User.objects.get(pk=user_id)
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, "Password has been reset successfully!")
+                return redirect('login')
+            except User.DoesNotExist:
+                messages.error(request, "User does not exist!")
+        else:
+            messages.error(request, "Session expired! Please try again.")
+    return render(request, 'accounts/reset-password.html')

@@ -135,3 +135,26 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 AUTH_USER_MODEL = 'accounts.User'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Email Configuration
+MAIL_PORT = config('MAIL_PORT', default=465, cast=int)
+MAIL_USE_SSL = (MAIL_PORT == 465)
+MAIL_USE_TLS = (MAIL_PORT == 587)
+
+MAILERS = {
+    "smtp": {
+        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+        "OPTIONS": {
+            "host": config('MAIL_HOST', default='smtp.gmail.com'),
+            "port": MAIL_PORT,
+            "username": config('MAIL_USERNAME'),
+            "password": config('MAIL_PASSWORD'),
+            "use_ssl": MAIL_USE_SSL,
+            "use_tls": MAIL_USE_TLS,
+        },
+    },
+    "default": {
+        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    },
+}
+DEFAULT_FROM_EMAIL = config('MAIL_USERNAME', default='noreply@zayka.com')

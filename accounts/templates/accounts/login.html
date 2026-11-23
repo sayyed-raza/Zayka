@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                             <label for="password" style="margin-bottom: 0;">Password</label>
-                            <a href="#" style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500;">Forgot Password?</a>
+                            <a href="{% url 'forgot-password' %}" style="font-size: 0.85rem; color: var(--primary-color); font-weight: 500;">Forgot Password?</a>
                         </div>
                         {{ form.password.errors }}
                         <div class="input-with-icon">
